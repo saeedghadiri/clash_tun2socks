@@ -1,0 +1,480 @@
+mixed-port: 7890
+allow-lan: true
+log-level: info
+secret: ""
+external-controller: 127.0.0.1:9090
+ipv6: false
+mode: rule
+
+proxies:
+  - name: vless+xtls_alexivanelli3.aber.ir_vless_98915
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    tls: false
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    flow: xtls-rprx-direct
+
+  - name: vless_ws_alexivanelli3.aber.ir_vless_41935
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    tls: true
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vlessws
+
+  - name: trojan_ws_alexivanelli3.aber.ir_trojan_74488
+    type: trojan
+    password: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    alpn:
+      - h2
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/trojanws
+
+  - name: vmess_ws_alexivanelli3.aber.ir_vmess_59999
+    type: vmess
+    server: 168.119.230.189
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vmessws
+
+
+  - name: CDN vless_ws_alexivanelli3.aber.ir_vless_41935
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: alexivanelli3.aber.ir
+    port: 443
+    udp: true
+    tls: true
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vlessws
+
+  - name: CDN trojan_ws_alexivanelli3.aber.ir_trojan_74488
+    type: trojan
+    password: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: alexivanelli3.aber.ir
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    alpn:
+      - h2
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/trojanws
+
+  - name: CDN vmess_ws_alexivanelli3.aber.ir_vmess_59999
+    type: vmess
+    server: alexivanelli3.aber.ir
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vmessws
+
+  - name: vless-grpc_alexivanelli3.aber.ir_vless_61006
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    tls: true
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    network: grpc
+    grpc-opts:
+      grpc-service-name: c211a1144e791e101dd3351983d93e81-vlgrpc
+  - name: trojan-grpc_alexivanelli3.aber.ir_trojan_49303
+    type: trojan
+    password: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    alpn:
+      - h2
+    network: grpc
+    grpc-opts:
+      grpc-service-name: c211a1144e791e101dd3351983d93e81-trgrpc
+  - name: vmess_grpc_alexivanelli3.aber.ir_vmess_59432
+    type: vmess
+    server: 168.119.230.189
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: grpc
+    grpc-opts:
+      grpc-service-name: c211a1144e791e101dd3351983d93e81-vmgrpc
+  - name: trojan+tls_alexivanelli3.aber.ir_trojan_58054
+    type: trojan
+    password: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    alpn:
+      - h2
+  - name: vless+tls_alexivanelli3.aber.ir_vless_81611
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    tls: true
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+  - name: vmess+tls_alexivanelli3.aber.ir_vmess_93601
+    type: vmess
+    server: 168.119.230.189
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: http
+    http-opts:
+      path:
+        - /c211a1144e791e101dd3351983d93e81/vmtc
+  # - name: trojan+tls+http1.1_alexivanelli3.aber.ir_trojan_78009
+  #   type: trojan
+  #   password: c211a114-4e79-1e10-1dd3-351983d93e81
+  #   server: 168.119.230.189
+  #   port: 443
+  #   udp: true
+  #   sni: alexivanelli3.aber.ir
+  #   skip-cert-verify: true
+  #   alpn:
+  #     - http/1.1
+  - name: vless+tls+http1.1_alexivanelli3.aber.ir_vless_16517
+    type: vless
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    tls: true
+    servername: alexivanelli3.aber.ir
+    skip-cert-verify: true
+  - name: vmess+tls+http1.1_alexivanelli3.aber.ir_vmess_11423
+    type: vmess
+    server: 168.119.230.189
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: http
+    http-opts:
+      path:
+        - /c211a1144e791e101dd3351983d93e81/vmtc
+
+
+  - name: old_ssfaketls_alexivanelli3.aber.ir_ss_85981
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: c211a1144e791e101dd3351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp_over_tcp: true
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: www.google.com
+
+
+  - name: old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+    type: trojan
+    password: 1
+    server: 168.119.230.189
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/trojan/
+
+  - name: old_v2ray_alexivanelli3.aber.ir_ss_94133
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: c211a1144e791e101dd3351983d93e81
+    server: 168.119.230.189
+    port: 443
+    udp_over_tcp: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      skip-cert-verify: true
+      host: alexivanelli3.aber.ir
+      path: /c211a1144e791e101dd3351983d93e81/v2ray/
+
+  - name: old_vmess_alexivanelli3.aber.ir_vmess_18831
+    type: vmess
+    server: 168.119.230.189
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vmess/
+
+  - name: CDN old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+    type: trojan
+    password: 1
+    server: alexivanelli3.aber.ir
+    port: 443
+    udp: true
+    sni: alexivanelli3.aber.ir
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/trojan/
+  - name: CDN old_v2ray_alexivanelli3.aber.ir_ss_94133
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: c211a1144e791e101dd3351983d93e81
+    server: alexivanelli3.aber.ir
+    port: 443
+    udp_over_tcp: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      skip-cert-verify: true
+      host: alexivanelli3.aber.ir
+      path: /c211a1144e791e101dd3351983d93e81/v2ray/
+
+  - name: CDN old_vmess_alexivanelli3.aber.ir_vmess_18831
+    type: vmess
+    server: alexivanelli3.aber.ir
+    port: 443
+    uuid: c211a114-4e79-1e10-1dd3-351983d93e81
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli3.aber.ir
+    network: ws
+    ws-opts:
+      path: /c211a1144e791e101dd3351983d93e81/vmess/
+
+  - name: VLESS WS 1
+    server: alexivanelli4.aber.ir
+    port: 443
+    type: vless
+    uuid: 878c3dc0-4f93-4e64-bdaf-062a2ed1cdfb
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli4.aber.ir
+    network: ws
+    ws-opts:
+      path: /djjfws
+      headers:
+        Host: alexivanelli4.aber.ir
+    udp: true
+  - name: VMess WS 1
+    server: alexivanelli4.aber.ir
+    port: 443
+    type: vmess
+    uuid: 878c3dc0-4f93-4e64-bdaf-062a2ed1cdfb
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli4.aber.ir
+    network: ws
+    ws-opts:
+      path: /djjfvws
+      headers:
+        Host: alexivanelli4.aber.ir
+    udp: true
+  - name: VLESS gRPC 1
+    server: alexivanelli4.aber.ir
+    port: 443
+    type: vless
+    uuid: 878c3dc0-4f93-4e64-bdaf-062a2ed1cdfb
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: alexivanelli4.aber.ir
+    network: grpc
+    grpc-opts:
+      grpc-service-name: djjfgrpc
+    udp: true
+  - name: Trojan TLS 1
+    server: alexivanelli4.aber.ir
+    port: 443
+    type: trojan
+    password: 878c3dc0-4f93-4e64-bdaf-062a2ed1cdfb
+    skip-cert-verify: true
+    sni: 1.1
+    udp: true
+  - name: Trojan gRPC 1
+    server: alexivanelli4.aber.ir
+    port: 443
+    type: trojan
+    password: 878c3dc0-4f93-4e64-bdaf-062a2ed1cdfb
+    skip-cert-verify: true
+    sni: alexivanelli4.aber.ir
+    network: grpc
+    grpc-opts:
+      grpc-service-name: djjftrojangrpc
+    udp: true
+
+proxy-groups:
+  - name: auto
+    type: url-test
+    url: 'https://www.facebook.com/'
+    interval: 500
+    proxies:
+      - vless+xtls_alexivanelli3.aber.ir_vless_98915
+      - vless_ws_alexivanelli3.aber.ir_vless_41935
+      - trojan_ws_alexivanelli3.aber.ir_trojan_74488
+      - vmess_ws_alexivanelli3.aber.ir_vmess_59999
+      - CDN vless_ws_alexivanelli3.aber.ir_vless_41935
+      - CDN trojan_ws_alexivanelli3.aber.ir_trojan_74488
+      - CDN vmess_ws_alexivanelli3.aber.ir_vmess_59999
+      - vless-grpc_alexivanelli3.aber.ir_vless_61006
+      - trojan-grpc_alexivanelli3.aber.ir_trojan_49303
+      - vmess_grpc_alexivanelli3.aber.ir_vmess_59432
+      - trojan+tls_alexivanelli3.aber.ir_trojan_58054
+      - vless+tls_alexivanelli3.aber.ir_vless_81611
+      - vmess+tls_alexivanelli3.aber.ir_vmess_93601
+      # - trojan+tls+http1.1_alexivanelli3.aber.ir_trojan_78009
+      - vless+tls+http1.1_alexivanelli3.aber.ir_vless_16517
+      - vmess+tls+http1.1_alexivanelli3.aber.ir_vmess_11423
+      - old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+      - old_v2ray_alexivanelli3.aber.ir_ss_94133     
+      - old_vmess_alexivanelli3.aber.ir_vmess_18831
+      - CDN old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+      - CDN old_v2ray_alexivanelli3.aber.ir_ss_94133     
+      - CDN old_vmess_alexivanelli3.aber.ir_vmess_18831
+      - old_ssfaketls_alexivanelli3.aber.ir_ss_85981
+      - VLESS WS 1
+      - VMess WS 1
+      - VLESS gRPC 1
+      - Trojan TLS 1
+      - Trojan gRPC 1
+
+  - name: PROXY
+    proxies:
+      - auto
+      - vless+xtls_alexivanelli3.aber.ir_vless_98915
+      - vless_ws_alexivanelli3.aber.ir_vless_41935
+      - trojan_ws_alexivanelli3.aber.ir_trojan_74488
+      - vmess_ws_alexivanelli3.aber.ir_vmess_59999
+      - CDN vless_ws_alexivanelli3.aber.ir_vless_41935
+      - CDN trojan_ws_alexivanelli3.aber.ir_trojan_74488
+      - CDN vmess_ws_alexivanelli3.aber.ir_vmess_59999
+      - vless-grpc_alexivanelli3.aber.ir_vless_61006
+      - trojan-grpc_alexivanelli3.aber.ir_trojan_49303
+      - vmess_grpc_alexivanelli3.aber.ir_vmess_59432
+      - trojan+tls_alexivanelli3.aber.ir_trojan_58054
+      - vless+tls_alexivanelli3.aber.ir_vless_81611
+      - vmess+tls_alexivanelli3.aber.ir_vmess_93601
+      # - trojan+tls+http1.1_alexivanelli3.aber.ir_trojan_78009
+      - vless+tls+http1.1_alexivanelli3.aber.ir_vless_16517
+      - vmess+tls+http1.1_alexivanelli3.aber.ir_vmess_11423
+      - old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+      - old_v2ray_alexivanelli3.aber.ir_ss_94133     
+      - old_vmess_alexivanelli3.aber.ir_vmess_18831
+      - CDN old_trojan-go_alexivanelli3.aber.ir_trojan-go_86355
+      - CDN old_v2ray_alexivanelli3.aber.ir_ss_94133     
+      - CDN old_vmess_alexivanelli3.aber.ir_vmess_18831
+      - old_ssfaketls_alexivanelli3.aber.ir_ss_85981  
+      - VLESS WS 1
+      - VMess WS 1
+      - VLESS gRPC 1
+      - Trojan TLS 1
+      - Trojan gRPC 1
+    type: select
+
+  - name: OnIranSites
+    proxies:
+      - PROXY
+      - DIRECT
+    type: select
+
+rules:
+  - IP-CIDR,10.10.34.0/24,PROXY
+  - GEOIP,IR,OnIranSites
+  - DOMAIN-SUFFIX,.ir,OnIranSites
+  - DOMAIN-SUFFIX,t.me,PROXY #tele gram
+  - DOMAIN-SUFFIX,tdesktop.com,PROXY #tele gram
+  - DOMAIN-SUFFIX,telegra.ph,PROXY #tele gram
+  - DOMAIN-SUFFIX,telegram.me,PROXY #tele gram
+  - DOMAIN-SUFFIX,telegram.org,PROXY #tele gram
+  - IP-CIDR,91.108.4.0/22,PROXY,no-resolve #tele gram
+  - IP-CIDR,91.108.8.0/22,PROXY,no-resolve #tele gram
+  - IP-CIDR,91.108.12.0/22,PROXY,no-resolve #tele gram
+  - IP-CIDR,91.108.16.0/22,PROXY,no-resolve #tele gram
+  - IP-CIDR,91.108.56.0/22,PROXY,no-resolve #tele gram
+  - IP-CIDR,149.154.160.0/20,PROXY,no-resolve #tele gram
+  - DOMAIN-KEYWORD,instagram,PROXY 
+  - DOMAIN-KEYWORD,whatsapp,PROXY
+  - DOMAIN-KEYWORD,facebook,PROXY
+  - DOMAIN-SUFFIX,cdninstagram.com,PROXY
+  - DOMAIN-SUFFIX,instagram.com,PROXY
+  - DOMAIN-SUFFIX,instanthq.com,PROXY
+  - DOMAIN-SUFFIX,instanthq.com,PROXY
+  - DOMAIN-SUFFIX,whatsapp.com,PROXY
+  - DOMAIN-SUFFIX,whatsapp.net,PROXY
+  - DST-PORT,5222,PROXY #whatspp
+  - DST-PORT,5223,PROXY #whatspp
+  - DST-PORT,5228,PROXY #whatspp
+  - DST-PORT,5242,PROXY #whatspp
+  - DST-PORT,3478,PROXY #whatspp
+  - DST-PORT,1400,PROXY #tele gram
+  - DOMAIN-SUFFIX,anydesk.com,DIRECT
+  - MATCH,PROXY
